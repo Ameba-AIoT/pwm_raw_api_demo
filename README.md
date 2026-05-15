@@ -90,17 +90,22 @@ Standard flashing method (using binaries generated in the current project direct
 
 ```bash
 ameba.py flash --p COMx \
-  --image km4_boot_all.bin 0x08000000 0x8014000 \
-  --image km0_km4_app.bin 0x08014000 0x8200000
+  --image boot.bin 0x08000000 0x8014000 \
+  --image app.bin 0x08014000 0x8200000
 ```
 
 ⚠️ If you want to use the **prebuilt binaries** provided in the project directory (parent folder), run:
 
 ```bash
 ameba.py flash --p COMx \
-  --image ../km4_boot_all.bin 0x08000000 0x8014000 \
-  --image ../km0_km4_app.bin 0x08014000 0x8200000
+  --image ../boot.bin 0x08000000 0x8014000 \
+  --image ../app.bin 0x08014000 0x8200000
 ```
+
+> ⚠️ **Note on binary filenames**: The output filenames depend on your SDK revision.
+> The latest SDK generates `boot.bin` + `app.bin`;
+> older SDK revisions generate `km4_boot_all.bin` + `km0_km4_app.bin`.
+> Replace the filenames in the commands above to match your actual build output.
 
 Replace `COMx` with the actual serial port, e.g. `COM5`.
 
